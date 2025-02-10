@@ -43,6 +43,7 @@ jobs:
     - name: Create or Update Lambda Function
       run: |
         FUNCTION_NAME=lambda-listener-update-video
+        ROLE_ARN=arn:aws:iam::851725324532:role/fiap-hackaton-lambda-role
         ZIP_FILE_PATH=lambda_function.zip
 
         # Check if the function exists
@@ -55,6 +56,7 @@ jobs:
               --function-name $FUNCTION_NAME \
               --zip-file fileb://$ZIP_FILE_PATH \
               --handler function.handler \
+              --role $ROLE_ARN \
               --environment Variables="{databaseName=${{ secrets.DB_NAME }},mongoUri=${{ secrets.MONGODB_URI }},collection=${{ secrets.COLLECTION }}}" \
               --runtime python3.9
         fi
