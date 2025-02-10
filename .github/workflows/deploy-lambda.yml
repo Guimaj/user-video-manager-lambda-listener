@@ -55,5 +55,6 @@ jobs:
               --function-name $FUNCTION_NAME \
               --zip-file fileb://$ZIP_FILE_PATH \
               --handler function.handler \
+              --environment Variables="{databaseName=${{ secrets.DB_NAME }},mongoUri=${{ secrets.MONGODB_URI }},collection=${{ secrets.COLLECTION }}}" \
               --runtime python3.9
         fi
