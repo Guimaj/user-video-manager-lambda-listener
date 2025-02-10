@@ -20,7 +20,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install -r requirements.txt
+        mkdir lambda_package
+        pip install -r requirements.txt -t lambda_package/
 
     - name: Package Lambda function
       run: |
